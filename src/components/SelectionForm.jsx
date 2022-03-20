@@ -26,5 +26,4 @@ const SelectionForm = (props) => {
     </Box>
   );
 };
-
 export default SelectionForm;
