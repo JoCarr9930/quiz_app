@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const SelectionForm = (props) => {
-  const { label } = props;
+  const { label, options } = props;
   const [value, setValue] = useState("");
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
 
   return (
     <Box mt={3} width="100%">
-      <FormControl size = "small" fullWidth="true">
+      <FormControl size="small" fullWidth="true">
         <InputLabel>{label}</InputLabel>
         <Select value={value} label={label} onChange={handleChange}>
-          <MenuItem>option1</MenuItem>
-          <MenuItem>option2</MenuItem>
-          <MenuItem>option3</MenuItem>
+          {options.map(({ id, name }) => {
+            return (
+              <MenuItem value={id} key={id}>
+                {name}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
     </Box>
